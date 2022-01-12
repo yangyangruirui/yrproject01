@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/jquery.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #angle{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <img src="../lib/angel.gif" alt="" id="angle">
+    <script>
+        $(function(){
+            //声明一个节流阀
+            var timer = null;
+            $(window).on('mousemove',function(e){
+                //判断节流阀是否为空 
+                if(timer){return}
+                //不节流直接做鼠标跟随
+                // $('#angle').css('left',e.pageX+"px").css('top',e.pageY+"px");
+                //开启定时器
+                timer=setTimeout(function(){
+                    $('#angle').css('left',e.pageX+"px").css('top',e.pageY+"px");
+                    timer=null;
+                    console.log(11)
+                },50);
+                // console.log(11);
+            })
+        })
+    </script>
+</body>
+</html>

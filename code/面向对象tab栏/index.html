@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>面向对象tab栏</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .houle{
+            width: 800px;
+            height: 600px;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+        .top{
+            height: 80px;
+            position: relative;
+        }
+        .top ul{
+            display: flex;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .top ul li{
+            list-style: none;
+            border-bottom: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+            padding: 20px 20PX 0 20px;
+            box-sizing: border-box;
+            height: 60px;
+            
+        }
+        .top ul .licurrent{
+            border-bottom: none;
+        }
+        .top .add{
+            position: absolute;
+            right: 10px;
+            top:20px;
+            font-size: 24px;
+        }
+        .content section{
+            display: none;
+        }
+        .content .current{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="houle" id="tab">
+        <div class="top">
+            <ul>
+                <li class="licurrent"><span>标签1</span><span class="delete">删除</span></li>
+                <li><span>标签2</span><span class="delete">删除</span></li>
+                <li><span> 标签3</span><span class="delete">删除</span></li>
+            </ul>
+            <span class="add">+</span>
+        </div>
+        <div class="content">
+            <section class="current">内容1</section>
+            <section>内容2</section>
+            <section>内容3</section>
+        </div>
+    </div>
+</body>
+<script src="./index.js"></script>
+</html>

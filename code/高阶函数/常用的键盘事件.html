@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    常用的键盘事件
+    <p>keyup ==>弹起</p>
+    <p>keydown ==> 按下</p>
+    <p>keypress ==> 按下  与keydown的区别是:keypress不识别功能键 如:"Ctrl alt shift"</p>
+    <script>
+        // document.onkeyup = function(){
+        //     console.log("我弹起了");
+        // }
+
+        document.addEventListener("keydown",function(){
+            console.log("我按下了");
+        });
+
+    
+        document.addEventListener("keypress",function(){
+            console.log("我按下了press");
+        });
+ 
+        document.addEventListener("keyup",function(e){
+            console.log(e.keyCode);
+            //我们的keyup 和 keydown 不区分字母的大小写 a 和A 得到的都是65
+            //keypress区分大小写
+        });
+    </script>
+</body>
+</html>

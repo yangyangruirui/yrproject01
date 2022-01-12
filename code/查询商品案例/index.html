@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 600px;
+            height: 600px;
+            border: 1px solid #ccc;
+        }
+
+        table tr {
+            height: 60px;
+        }
+
+        table td,
+        th {
+            border-bottom: 1px solid #ccc;
+            width: 200px;
+            text-align: center;
+            height: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <span>按价格筛选</span>
+    <input type="text" name="" id="start">
+    -
+    <input type="text" name="" id="end">
+    <input type="button" value="查询" id="one">
+    <span>按商品名称查询</span>
+    <input type="text" name="" id="gname">
+    <input type="button" value="查询" id="two">
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>产品名称</th>
+                    <th>价格</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        var data = [
+            {
+                id: 1,
+                name: "小米",
+                price: 1999
+            },
+            {
+                id: 2,
+                name: "华为",
+                price: 2999
+            },
+            {
+                id: 3,
+                name: "OPPO",
+                price: 2255
+            },
+            {
+                id: 4,
+                name: "苹果",
+                price: 5999
+            },
+        ];
+        //1.先获取元素
+        var tobody = document.querySelector("tbody");
+        var start = document.querySelector("#start");
+        var end = document.querySelector("#end");
+        var one = document.querySelector("#one");
+        var gname = document.querySelector("#gname");
+        var two = document.querySelector("#two");
+        getdata(data);
+        //2.渲染界面==>填充数据
+        function getdata(mydata) {
+            tobody.innerHTML = "";
+            mydata.forEach(function (value) {
+                // console.log(value);
+                var tr = document.createElement("tr");
+                tr.innerHTML = '<td>' + value.id + '</td><td>' + value.name + '</td><td>' + value.price + '</td>'
+                tobody.appendChild(tr);
+            })
+        }
+
+        //3.点击查询 筛选适合的数据  并渲染至界面
+        one.addEventListener("click", function () {
+            var newarr = data.filter(function (value) {
+                return value.price >= start.value && value.price <= end.value
+            });
+            //    console.log(newarr);
+            getdata(newarr);
+        })
+        //4.查找数组中唯一的元素,用some效率更高,因为他查找到了这个元素,就退出循环.
+        two.addEventListener("click",function(){
+            data.some(function(value){
+                if(value.name == gname.value){
+                    console.log(value);
+                    var newarr = [];
+                    newarr.push(value);
+                    getdata(newarr);
+                    return true;  //return 必须返回true 意为找到了数据
+                }
+            })
+        });
+    </script>
+</body>
+
+</html>

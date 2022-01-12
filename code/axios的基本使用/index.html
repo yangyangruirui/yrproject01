@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/axios.js"></script>
+</head>
+
+<body>
+    <button id="btn">发送请求</button>
+    <button id="btnaxios">直接发起axios请求</button>
+    <script>
+        var btn = document.querySelector("#btn");
+        // var url = "http://www.liulongbin.top:3006/api/get";
+        // var paramobj = {
+        //     name: "zs",
+        //     age: 18
+        // }
+        btn.addEventListener('click', function () {
+            // req();
+            reqpost();
+        });
+
+        // function req(){
+        //     axios.get(url, { params: paramobj }).then(function (res) {
+        //         console.log(res);
+        //         //res.data才是返回的数据
+        //         var data = res.data;
+        //         console.log(data);
+        //     })
+        // }
+        var url = "http://www.liulongbin.top:3006/api/post";
+        var dataobj={
+            location:"beijing",
+            adress:"shunyi"
+        }
+        function reqpost(){
+            axios.post(url,dataobj).then(function(res){
+                console.log(res.data);
+            })
+        }
+
+        var btnaxios = document.querySelector("#btnaxios");
+        btnaxios.addEventListener('click',function(){
+            var url = "http://www.liulongbin.top:3006/api/get";
+            var paramobj = {
+                name:"ls",
+                age:20
+            }
+            axios({
+                methods:"GET",
+                url:url,
+                params:paramobj,
+            }).then(function(res){
+                console.log(res.data);
+            })
+        });
+    </script>
+</body>
+
+</html>

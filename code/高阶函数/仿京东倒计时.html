@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            width: 100px;
+            height: 100px;
+            background-color: black;
+            color: #fff;
+            display: inline-block;
+            margin-right: 20px;
+            font-size: 48px;
+            line-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <p>仿京东倒计时</p>
+    <span class="hour">00</span>
+    <span class="minite">00</span>
+    <span class="seconds">00</span>
+    <script>
+        var hour = document.querySelector(".hour");
+        var minite = document.querySelector(".minite");
+        var seconds = document.querySelector(".seconds");
+
+        function getlast(time){
+            var nowsec = +new Date(); //现在的时间戳
+            var inputsec = +new Date(time); //输入的时间戳
+            var lasttime = (inputsec - nowsec) / 1000; //剩余的时间 秒数
+            var h = parseInt(lasttime/60/60%24);
+            h = h<10? "0"+h :h;
+            var m = parseInt(lasttime/60%60);
+            m = m<10? "0" + m:m;
+            var s = parseInt(lasttime%60);    
+            s = s <10?"0"+s : s;
+            return {
+                h:h,
+                m:m,
+                s:s
+            }
+        }
+        function setText(){
+           var time = getlast("2021-12-28 12:00:00")
+           hour.innerHTML = time.h;
+           minite.innerHTML = time.m;
+           seconds.innerHTML =time.s;
+            
+        }
+
+        setInterval(setText, 1000);
+    </script>
+</body>
+</html>

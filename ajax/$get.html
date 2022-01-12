@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js">
+    </script>
+</head>
+<body>
+    <button id="getbtn">点击发起不带参数的get请求</button>
+    <button id="getbtn2">点击发起带参数的get请求</button>
+    <script>
+        $(function(){
+            $("#getbtn").on("click",function(){
+                $.get("http://www.liulongbin.top:3006/api/getbooks",function(res){
+                    console.log(res);
+                });
+            });
+            $("#getbtn2").on('click',function(){
+                $.get("http://www.liulongbin.top:3006/api/getbooks",{bookname:'西游记'},function(res){
+                    console.log(res);
+                })
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    利用构造函数创建对象
+</body>
+<script>
+    //利用构造函数创建对象
+    //创建四大天王 的对象 相同属性:姓名,年龄,性别
+    //function 构造函数名(){
+    // this.属性 = 值;
+    // this. 方法 = function(){}
+    // }
+    // new 构造函数名();
+
+    //1.构造函数  明星  是泛指的某一大类
+    function Star(name,age,sex){
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+        this.sing = function(sang){
+            console.log(sang);
+        }
+    }
+
+    //2.对象  是一个具体的事务
+    //3. 我们利用构造函数创建对象的过程我们称为对象实例化
+    var ldh = new Star("刘德华","18","男");
+    console.log(ldh.name);
+    ldh.sing("冰雨");
+    //1.构造函数首字母大写
+    //2.构造函数不需要return 就可以返回结果
+    //3.调用构造函数必须使用new
+    //new 在 执行时会做的4件事
+    // 3.1 在内存中创建一个空的对象
+    // 3.2 让this指向这个新的对象
+    // 3.3 执行构造函数里面的方法 让这个新的对象添加属性和方法
+    // 3.4 返回这个新的对象 (所以构造函数不需要return)
+    //4.我们只要new Star() 调用函数就创建了一个ldh{}
+    //5.我们的属性和方法名前必须加this
+</script>
+</html>

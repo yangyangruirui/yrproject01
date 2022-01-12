@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <!-- 导入页面的基本样式 -->
+  <link rel="stylesheet" href="./css/search.css" />
+  <!-- 导入 jQuery -->
+  <script src="./lib/jquery.js"></script>
+  <script src="./lib/template-web.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Logo -->
+    <img src="./images/taobao_logo.png" alt="" class="logo" />
+
+    <div class="box">
+      <!-- tab 栏 -->
+      <div class="tabs">
+        <div class="tab-active">宝贝</div>
+        <div>店铺</div>
+      </div>
+      <!-- 搜索区域（搜索框和搜索按钮） -->
+      <div class="search-box">
+        <input id="ipt" type="text" class="ipt" placeholder="请输入要搜索的内容" /><button class="btnSearch">
+          搜索
+        </button>
+      </div>
+      <!-- 搜索列表区域 -->
+      <div id="suggest-list">
+      </div>
+    </div>
+  </div>
+  <script type="text/html" id="conlist">
+      <ul>
+        {{each result}}
+        <li>{{$value[0]}}</li>
+        {{/each}}
+      </ul>
+    </script>
+  <script>
+    $(function () {
+      //定义延时器的ID
+      var timer =null;
+      //定义全局缓存对象
+      var cacheobj = {};
+      //定义延时函数
+      function delay(incon){
+        timer= setTimeout(function(){
+          getsuggest(incon)
+        },500)
+      }
+      //为输入框绑定keyup事件
+      $('#ipt').on('keyup', function () {
+        //清空timer
+        clearTimeout(timer);
+        var incon = $(this).val().trim();
+        if (incon.length <= 0) {
+          return $('#suggest-list').empty().hide();
+        }
+        //先判断缓存里面是否有数据
+        if(cacheobj[incon]){
+          return temp(cacheobj[incon]);
+        }
+        //getsuggest(incon)
+        delay(incon);
+      })
+
+      //封装函数请求服务器数据
+      function getsuggest(kw) {
+        $.ajax({
+          url: "https://suggest.taobao.com/sug?q=" + kw,
+          dataType: "jsonp",
+          success: function (res) {
+            // console.log(res.result);
+            temp(res);
+          }
+        })
+      }
+
+      //渲染template模板内容
+      function temp(res){
+        //模板
+        if(res.result.length<=0){
+          return $("#suggest-list").empty().hide();
+        }
+        var reshtml = template("conlist", res);
+        $("#suggest-list").html(reshtml).show();
+
+        //获取到用户输入的内容 当做键
+        var k = $('#ipt').val().trim();
+        //需要将数据作为值 进行缓存
+        cacheobj[k] = res;
+      }
+
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>点击</button>
+    <script>
+        // class Father{
+        //     constructor(x,y){
+        //         this.x = x;
+        //         this.y = y;
+        //     }
+        //     sum(){
+        //         console.log(this.x +this.y);
+        //     }
+        // }
+        // class Son extends Father{
+        //     constructor(x,y){
+        //         super(x,y); // super()方法必须放在子类this.x之前
+        //         this.x = x;
+        //         this.y = y;
+        //     }
+        //     sustract(){
+        //         console.log(this.x - this.y);
+        //     }
+        // }
+        // var son = new Son(5,3);
+        // son.sustract();
+        // son.sum();
+
+        //使用类的注意事项
+        var that;
+        class Star{
+            constructor(uname,age){
+                that = this;
+                //在constructor里面 this指向的是实例化的对象  此处this指向 ldh
+                this.uname = uname;
+                this.age = age;
+                // this.sing();
+                this.btn = document.querySelector("button");
+                this.btn.onclick = this.sing;
+            }
+            sing(){
+               //这个sing方法里面的this指向的是  btn按钮  因为是btn函数调用了sing方法
+                console.log(that.uname + "唱歌"); //这里的that存储的是constructor里面的this
+            }
+            dance(){
+                 //方法里面的this 指向的是调用 的对象  这里也是指向ldh
+                 console.log(this);
+            }
+        }
+        var ldh = new Star("刘德华",28);
+        ldh.dance();
+    </script>
+</body>
+</html>

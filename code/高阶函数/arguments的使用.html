@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    arguments的使用
+</body>
+<script>
+    //arguments的使用 
+    //只有函数才有arguments对象 而且是每个函数都内置好了arguments
+    //arguments 里面存储了所有传递过来的实参
+    //arguments 是一个伪数组
+     //伪数组特性:
+        //1.具有数组的length属性
+        //2.按照索引的方式进行存储的
+        //3.没有真正数组的一些方法 如 pop(), push()等
+    function fn(){
+        console.log(arguments);
+        console.log(arguments.length);
+        //我们可以按照数组的方式遍历arguments
+        for (let i = 0; i < arguments.length; i++) {
+            console.log(arguments[i]);
+        }
+    }
+    fn(1,2,3);
+    fn(1,2,3,4,5);
+
+    //利用函数求任意个数的最大值
+    console.log("------------------------------");
+    function getMax(){
+        var max = arguments[0];
+        for (let i = 0; i < arguments.length; i++) {
+            if (arguments[i] > max) {
+                max = arguments[i];
+            }
+        }
+        return max;
+    }
+
+    console.log(getMax(11,22,33));
+    console.log(getMax(1,2,3,4,5));
+</script>
+</html>

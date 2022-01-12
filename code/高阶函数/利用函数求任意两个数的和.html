@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    利用函数求任意两个数的和
+</body>
+<script>
+    //求任意两个数的和
+    function getSum(num1,num2){
+        var sum = num1+num2;
+        console.log(sum);
+    }
+    getSum(100,200);
+    // 求任意两个数的累加和
+    function getTotal(s,e){
+        var all =0
+        for (let i = s; i <=e; i++) {
+            all +=i;
+        }
+        console.log(all);
+    }
+    getTotal(10,100);
+
+    //1.函数的形参个数等于实参个数  输出正确结果
+    //2.函数的形参个数小于实参个数, 输出到函数的形参个数.
+    //3.函数的形参个数多余实参个数,多的形参默认为undefined 
+</script>
+</html>

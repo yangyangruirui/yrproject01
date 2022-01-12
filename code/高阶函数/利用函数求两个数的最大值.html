@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    利用函数求任意两个数的最大值
+    利用函数求数组中的最大值
+</body>
+<script>
+    function getbig(num1,num2){
+        // if(num1>num2){
+        //     return num1
+        // }
+        // return num2;
+        //三目表达式
+        return num1 >num2 ? num1:num2
+    }
+    console.log(getbig(22,55));
+
+    function getmax(arr){
+        var max = arr[0];
+        for (let i = 1; i <= arr.length; i++) {
+            if (arr[i]>max) {
+                max = arr[i]
+            }
+        }
+        return max;
+    }
+    console.log(getmax([12,55,17,48,98]));
+
+    //return 的注意事项
+    //1.return 终止函数
+    function getsum(n1,n2){
+        return n1+n2;
+        alert("我是不会执行的");
+    }
+    console.log(getsum(14,15));
+    //2.return 只能返回一个值
+    function fn(n1,n2){
+        //只会返回最后一个值
+        return n1,n2;
+    }
+    console.log(fn(1,2));
+    //3. 求任意两个数的加减乘除
+    function getresult(n1,n2){
+        return [n1+n2,n1-n2,n1*n2,n1/n2]
+    }
+    var re = getresult(11,10);
+    console.log(re);
+
+    //4.函数如果有return 返回return后的值  如果没有return  返回undefined
+    function fn1(){
+
+    }
+    console.log(fn1());
+
+    //5. break, continue,return 的区别
+    //break 跳出当前循环体
+    //continue 跳出本次循环,继续执行下次循环
+    //return 不仅能够跳出循环 还能return后面的值 同时结束当前循环体内的代码
+    
+</script>
+</html>

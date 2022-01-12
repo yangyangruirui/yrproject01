@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    函数
+</body>
+<script>
+    // 求1~100的和
+    var total=0;
+    for(var i = 1;i<=100;i++){
+        total +=i;
+    }
+    console.log(total);
+
+    // 求10到50的和
+    var total =0;
+    for(var i =10; i<=50;i++){
+        total +=i;
+    }
+    console.log(total);
+
+    // 用函数表示，减少重复代码量
+    // 函数就是封装了一段被重复执行的代码块
+    function sum(num1,num2){
+        var plus=0;
+        for(var i=num1; i<=num2;i++){
+            plus +=i;
+        }
+        console.log(plus);
+    }
+    sum(1,100);
+    sum(10,50);
+    
+</script>
+</html>

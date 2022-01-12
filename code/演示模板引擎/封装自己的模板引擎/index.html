@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./template.js"></script>
+</head>
+<body>
+    <div id="con"></div>
+
+    <!-- 1.定义模板结构
+    2.调用模板引擎
+    3.封装template函数
+    4。导入并使用自定义的模板引擎 -->
+
+    <script type="text/html" id="mytemp">
+        <div>姓名：{{name}}</div>
+        <div>年龄：{{ age }}</div>
+        <div>性别：{{ sex}}</div>
+        <div>地址：{{adress }}</div>
+    </script>
+
+    <script>
+        var data={
+            name:"zhangsan",
+            age:"18",
+            sex:"male",
+            adress:"sc cd"
+        }
+        var reshtml = template('mytemp',data);
+        document.querySelector("#con").innerHTML = reshtml;
+    </script>
+</body>
+</html>

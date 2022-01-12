@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>click me</button>
+    <script>
+        //1.foreach()
+        // var arr = [1,2,3];
+        // var sum=0;
+        // arr.forEach(function(value,index,array){
+        //     console.log("数组中的每个数"+value);
+        //     console.log("数组中的每个数的索引值"+index);
+        //     console.log("数组本身"+array);
+        //     sum+=value;
+        // })
+        // console.log(sum);
+
+        //2.filter()
+        // var arr = [22,14,15,55,66];
+        // var newarr = arr.filter(function(value,index){
+        //     return value >= 20;
+        // });
+        // console.log(newarr);
+
+        //3.some()
+        // var arr = [12,44,58,1];
+        // var flag = arr.some(function(value){
+        //     return value >20;
+        // })
+        // console.log(flag);
+
+        // var obj = {
+        //     id:1,
+        //     name:"zs",
+        //     age:18
+        // }
+        // Object.defineProperty(obj,"name",{
+        //     value:"ls"
+        // });
+        // Object.defineProperty(obj,"id",{
+        //     //不可修改id 的值
+        //     writable:false
+        // });
+        // obj.id = 2;
+        // Object.defineProperty(obj,"adress",{
+        //     value:"远大四期",
+        //     //不可遍历  默认为false
+        //     enumerable:false,
+        //     //不可修改id 的值
+        //     writable:false,
+        //     //不允许删除这个属性  一旦设置 不允许修改第三个参数里面的特性
+        //     configurable:false
+        // });
+        // delete obj.adress;
+        // console.log(obj);
+        // console.log(Object.keys(obj)); 
+
+        // //1.普通函数
+        // function fn(){
+        //     console.log("hello yr1");
+        // }
+        // fn();
+        // fn.call();
+
+        // //2.对象的方法
+        // var o = {
+        //     sayhi:function(){
+        //         console.log("hello yr2");
+        //     }
+        // }
+        // o.sayhi();
+
+        // //3.构造函数
+        // function Father(){
+        //     this.sayhi  = function(){
+        //         console.log("hello yr3");
+        //     }
+        // }
+        // var father = new Father();
+        // father.sayhi();
+
+        // //4.绑定事件函数
+        // var btn = document.querySelector("button");
+        // btn.addEventListener("click",function(){
+        //     console.log("hello yr4");
+        // });
+        // //5.定时器函数
+        // setTimeout(function(){
+        //     console.log("hello yr5");
+        // },1000);
+        // //6.立即执行函数
+        // (function(){
+        //     console.log("hello yr6");
+        // })()
+
+
+        // call()
+        //1.call() 可以调用函数
+        //2.call()可以修改函数的this指向
+        // var o = {
+        //     name:"ls"
+        // }
+        // function fn(){
+        //     console.log(this);
+        // }
+        // fn.call(o);
+        // //3.call() 可以继承
+        // function Father(name,age){
+        //     this.name = name;
+        //     this.age = age;
+        // }
+        // function Son(name,age){
+        //     Father.call(this,name,age);
+        // }
+        // var son  = new Son("ls",18);
+        // console.log(son);
+
+        // apply()
+        // var o = {
+        //     name:"ls"
+        // }
+        // function fn(arr){
+        //     console.log(this);
+        //     console.log(arr);
+        // }
+        // fn.apply(o,['p']);
+        // var arr = [11,55,199,22];
+        // var max = Math.max.apply(Math,arr);
+        // console.log(max);
+
+        //bind方法
+        var btn = document.querySelector("button");
+        btn.onclick  = function(){
+            this.disabled = true;
+            setTimeout(function(){
+                this.disabled = false;
+            }.bind(this),3000);
+        }
+    </script>
+</body>
+</html>

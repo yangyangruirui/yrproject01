@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    倒计时案例
+</body>
+<script>
+    //算法:输入的时间减去当前的时间就是剩下的时间,但是不能用时分秒相减,会出现负数
+    //2.用时间戳来做,输入的时间的毫秒数-现在时间的毫秒数 = 剩余毫秒数
+    //3. 天 = parseInt(剩余毫秒/1000/60/60/24)
+    //4. 时 = parseInt(剩余毫秒/1000/60/60)
+    //....
+    function getlast(time){
+        var nowsec = +new Date(); //现在的毫秒数
+        var inputsec = +new Date(time);
+        var lastTime = inputsec -nowsec;
+        lastTime = lastTime /1000;
+        var d = parseInt(lastTime/60/60/24);
+        d = d<10? "0" +d : d ;
+        var h = parseInt(lastTime/60/60%24);
+        h = h<10? "0" +h : h ;
+        var m = parseInt(lastTime/60%60);
+        m = m < 10? "0"+m : m;
+        var s = parseInt(lastTime/60);
+        s = s<10? "0" +s :s ;
+        return d +"天" + h+":"+m+":"+s
+    }
+    console.log(getlast("2021-12-27 12:00:00"));
+
+    var arr = [1200,1800,2500,2100,1900];
+    var newarr=[];
+    for (let i = 0; i < arr.length; i++) {
+        if(arr[i] < 2000){
+            newarr.push(arr[i]);
+        }
+    }
+    console.log(newarr);
+</script>
+</html>

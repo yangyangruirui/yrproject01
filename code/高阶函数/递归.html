@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var num=1;
+        // function fn(){
+        //     console.log("打印6次");
+        //     if(num == 6){
+        //         return;
+        //     }
+        //     num++;
+        //     fn();
+            
+        // }
+        // fn();
+
+        //利用递归求阶乘
+        // function fn(n){
+        //     if(n==1){
+        //         return 1;
+        //     }
+        //     return n*fn(n-1)
+        // }
+        // console.log(fn(3));
+
+        //利用递归求 斐波那契数列 1 1 2 3 5 8 13 21....
+        //即第三个数的值等于前面两数的和
+        //当用户输入 n  求出n对应的数列值
+        // function fn(n){
+        //     if(n == 1 || n==2){
+        //         return 1;
+        //     }
+        //     return fn(n-1) + fn(n-2)
+        // }
+        // console.log(fn(5));
+
+        //利用递归遍历数组
+        //要求:输入Id 号 打印出该Id号所在位置的属性
+        // var data=[
+        //     {
+        //         id:1,
+        //         name:"一",
+        //         goods:[{
+        //             id:11,
+        //             name:"1.1"
+        //         },{
+        //             id:12,
+        //             name:"1.2"
+        //         }]
+        //     },
+        //     {
+        //         id:2,
+        //         name:"2"
+        //     }
+        // ];
+        // function getId(json,id){
+        //     json.forEach(function(value){
+        //         // console.log(value);
+        //         if(value.id == id){
+        //             console.log(value);
+        //         }else if(value.goods && value.goods.length >0){
+        //             getId(value.goods,id);
+        //         }
+        //     });
+        // }
+        // getId(data,1);
+        // getId(data,11);
+
+        //浅拷贝 和深拷贝
+        var data = {
+            id:1,
+            name:"z",
+            mes:{
+                name:"l"
+            }
+        }
+        //浅拷贝 修改后一个对象内部对象的属性会同时修改前一个对象。
+        var o= {};
+        // for (var k in data) {
+        //     o[k] = data[k]
+        // }
+        // o.mes.name = "y";
+        // console.log(o);
+
+        //assing()  方法也是浅拷贝
+        Object.assign(o,data);
+
+    </script>
+</body>
+</html>

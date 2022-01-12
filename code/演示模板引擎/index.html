@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 1.引入template模板 -->
+    <script src="../lib/template-web.js"></script>
+</head>
+<body>
+    <!-- 5.渲染html -->
+    <div id="container"></div>
+    <!-- 3.定义模板 -->
+    <!-- 3.1模板必须定义在script标签内 -->
+    <script type="text/html" id="temcon">
+        <h1>姓名:{{name}}</h1>
+        <p>年龄:{{age}}</p>
+        <p>性别:{{sex}}</p>
+        {{test}}
+        {{@test}}
+        <div>
+            {{if flag == 0}}
+            flag的值是0
+            {{else if flag==1}}
+            flag的值是1
+            {{/if}}
+        </div>
+        <p>爱好:</p>
+        <ul>
+            {{each hobby}}
+                <li>索引值是：{{$index}} 循环项是：{{$value}}</li>
+            {{/each}}
+        </ul>
+        <div>时间：{{regtime | dateform}}</div>
+    </script>
+    <script>
+        template.defaults.imports.dateform = function(date){
+            var y = date.getFullYear();
+            var m = date.getMonth()+1;
+            m = m<10?"0"+m:m;
+            var d = date.getDate();
+            d = d<10?"0"+d:d;
+            return y+"-"+m+"-"+d
+        }
+
+        // 2.定义数据
+        var data ={
+            name:"zs",
+            age:18,
+            sex:"male",
+            test:"<h3>测试原文输出</h3>",
+            flag:1,
+            hobby:["吃饭","睡觉","打豆豆"],
+            regtime:new Date,
+        }
+        // 4.调用template函数
+        var thtml =  template('temcon',data);
+        var container = document.querySelector("#container");
+        container.innerHTML = thtml;
+    </script>
+</body>
+</html>

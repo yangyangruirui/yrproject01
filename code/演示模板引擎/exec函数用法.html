@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // exex()
+        // var string = "hello";
+        // var patten = /o/;
+        // var res =  patten.exec(string);
+        // console.log(res);
+
+        // 分组
+        // var str = "<div>{{name}}</div>";
+        // var pattern = /{{([a-zA-Z]+)}}/;
+        // var res =  pattern.exec(str);
+        // console.log(res);
+
+        //replace()
+        var data={
+            name:"zs",
+            age:18
+        }
+        var str = "<div>我是{{name}} 今年{{age}}岁了</div>"
+        var pattern = /{{\s*([a-zA-Z]+)\s*}}/;
+
+        var res = null;
+        while(res = pattern.exec(str)){
+            str = str.replace(res[0],data[res[1]]);
+        }
+        console.log(str);
+    </script>
+</body>
+</html>

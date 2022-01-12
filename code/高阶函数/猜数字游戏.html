@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    猜数字游戏
+</body>
+<script>
+    //1.随机生成一个1~10 的整数,需要用到Math.Random()方法
+    //2.需要一直猜到正确为止,所以需要一直循环
+    //3.while循环更简单
+    //4.核心算法  使用if else if else 来判断猜的数字大于 小于还是等于
+    function getRandom(min,max){
+        return Math.floor(Math.random()*(max - min + 1) +min);
+    }
+    // var random = getRandom(1,10);
+    // while(true){
+    //     var num = prompt("你来猜? 请输入1~10之间的数字");
+    //     if(num > random){
+    //         alert("你猜大了");
+    //     }else if(num < random){
+    //         alert("你猜小了");
+    //     }else{
+    //         alert("猜对了");
+    //         break;
+    //     }
+    // }
+
+    //猜1~50 之间的数字,只有10次机会
+    var random = getRandom(1,50);
+    var i=0;
+    while(i<10){
+        var num = prompt("猜1~50的数? 请输入你猜的数字");
+        if(num > random){
+            alert("你猜大了");
+        }else if(num < random){
+            alert("你猜小了");
+        }else{
+            alert("猜对了");
+            break;
+        }
+        i++;
+    }
+</script>
+</html>

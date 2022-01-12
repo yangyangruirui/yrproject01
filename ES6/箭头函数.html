@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //箭头函数的声明
+        // const fn = ()=>{
+        //     console.log(123);
+        // }
+        // fn();
+        //在箭头函数中  如果函数体只有一句代码  并且执行结果就是函数的返回值 这时大括号可以省略
+        // const sum = (n1,n2)=>n1+n2;
+        // const num = sum(10,20);
+        // console.log(num);
+
+        //在箭头函数中,如果形参只有一个,那么小括号可以省略.
+        // const r = v=>v;
+        // const n = r(200);
+        // console.log(n);
+
+        //箭头函数不绑定this 箭头函数没有自己的this关键字 如果在箭头函数中使用this关键字 
+        //this关键字将指向函数定义位置中的this
+        // function fn(){
+        //     console.log(this);
+        //     return ()=>{
+        //         console.log(this);
+        //     }
+        // }
+        // const person = {
+        //     name:"zhangsan"
+        // }
+        // const resfn = fn.call(person);
+        // resfn();
+
+        // const person = {
+        //     age:18,
+        //     say:()=>{
+        //         console.log(this.age);
+        //     },
+        //     other:function(){
+        //         console.log(this.age);
+        //     }
+        // } 
+        // person.say();
+        // person.other();
+
+        // //剩余参数
+        // const fn = (...args)=>{
+        //     let total=0;
+        //     args.forEach(item=> total+=item);
+        //     return total
+        // }
+        // console.log( fn(10,20));
+        // console.log(fn(10,20,30)); 
+
+        //扩展运算符
+        //可以将数组拆分成以逗号分隔的参数序列
+        // let arr = [1,2,3];
+        // console.log(...arr); 
+        // console.log(1,2,3);
+
+        //应用与合并数组
+        // //方法一
+        // let arr1 = [1,2,3];
+        // let arr2 = [4,5,6];
+        // let arr3 = [...arr1,...arr2];
+        // console.log(arr3);
+        // //方法二:push()
+        // arr1.push(...arr2);
+        // console.log(arr1);
+
+
+        // //模板字符串
+        // const name = `张三`;
+        // const sayhello = `hello,my name is ${name}`;
+        // console.log(sayhello);
+
+        //利用set() 数据结构可以做数组去重
+        const s1 = new Set();
+        console.log(s1.size);
+
+        const s2 = new Set(["a","b"]);
+        console.log(s2.size);
+
+        const s3 = new Set(["a","a","b","b"]);
+        console.log(s3.size);
+        const s4 = [...s3]
+        console.log(s4);
+    </script>
+</body>
+</html>

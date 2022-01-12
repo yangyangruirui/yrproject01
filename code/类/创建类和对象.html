@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    创建类和对象
+    <script>
+        class Star{
+            constructor(uname){
+                this.uname = uname;
+            }
+            //在类里面的方法之间不用逗号分隔
+            //类里面的方法也不用加function
+            sing(song){
+                console.log(this.uname + song);
+            }
+        }
+
+        var ldh = new Star("liu");
+        console.log(ldh.uname);
+        ldh.sing("忘情水");
+    </script>
+</body>
+</html>
