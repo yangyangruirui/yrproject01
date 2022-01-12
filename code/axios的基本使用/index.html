@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="../lib/axios.js"></script>
+    <script src="../../lib/axios.js"></script>
 </head>
 
 <body>
@@ -19,7 +19,7 @@
         //     name: "zs",
         //     age: 18
         // }
-        btn.addEventListener('click', function () {
+        btn.addEventListener('click', function() {
             // req();
             reqpost();
         });
@@ -33,28 +33,29 @@
         //     })
         // }
         var url = "http://www.liulongbin.top:3006/api/post";
-        var dataobj={
-            location:"beijing",
-            adress:"shunyi"
+        var dataobj = {
+            location: "beijing",
+            adress: "shunyi"
         }
-        function reqpost(){
-            axios.post(url,dataobj).then(function(res){
+
+        function reqpost() {
+            axios.post(url, dataobj).then(function(res) {
                 console.log(res.data);
             })
         }
 
         var btnaxios = document.querySelector("#btnaxios");
-        btnaxios.addEventListener('click',function(){
+        btnaxios.addEventListener('click', function() {
             var url = "http://www.liulongbin.top:3006/api/get";
             var paramobj = {
-                name:"ls",
-                age:20
+                name: "ls",
+                age: 20
             }
             axios({
-                methods:"GET",
-                url:url,
-                params:paramobj,
-            }).then(function(res){
+                methods: "GET",
+                url: url,
+                params: paramobj,
+            }).then(function(res) {
                 console.log(res.data);
             })
         });
