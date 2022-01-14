@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Linkedlist() {
+            var Node = function(element) {
+                this.element = element;
+                this.next = null;
+            };
+            var length = 0;
+            var head = null;
+            //添加元素到最后一位
+            this.append = function(element) {
+                    var node = new Node(element),
+                        current;
+                    if (head === null) {
+                        head = node;
+                    } else {
+                        current = head;
+                        //循环列表  直到找到最后一项
+                        while (current.next) {
+                            current = current.next;
+                        }
+                        current.next = node;
+                    }
+                    length++;
+                }
+                //移除指定位置的元素
+            this.removeAt = function(position) {
+                    //检查越界值
+                    if (position > -1 && position < length) {
+                        var current = head,
+                            previous,
+                            index = 0;
+                        //移除第一项
+                        if (position === 0) {
+                            head = current.next;
+                        } else {
+                            while (index++ < position) {
+                                previous = current;
+                                current = current.next;
+                            }
+                            //将前一项的与要移除的元素的后一项链接起来
+                            previous.next = current.next;
+                        }
+                        length--;
+                        return current.element;
+                    } else {
+                        return null;
+                    }
+                }
+                //在任意位置插入元素
+            this.insert = function(position, element) {
+                    if (position >= 0 && position <= length) {
+                        var node = new Node(element);
+                        var current = head,
+                            previous,
+                            index = 0;
+                        if (position === 0) {
+                            node.next = current;
+                            head = node;
+                        } else {
+                            while (index++ < position) {
+                                previous = current;
+                                current = current.next;
+                            }
+                            node.next = current;
+                            previous.next = node;
+                        }
+                        length++;
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+                //tostring()
+            this.toString = function() {
+                var current = head,
+                    string = '';
+                while (current) {
+                    string += current.element;
+                    current = current.next;
+                }
+                return string;
+            }
+            this.indexof = function(element) {
+                var current = head,
+                    index = -1;
+                while (current) {
+                    if (element === current.element) {
+                        return index;
+                    }
+                    index++;
+                    current = current.next;
+                }
+                return -1;
+            }
+            this.remove = function(element) {
+                var index = this.indexof(element);
+                return this.removeAt(index);
+            }
+            this.isEmpty = function() {
+                return length === 0;
+            }
+            this.size = function() {
+                return length;
+            }
+            this.getHead = function() {
+                return head;
+            }
+        }
+        var list = new Linkedlist();
+        list.append(15);
+        list.append(10);
+        list.append(8);
+        list.insert(2, 12);
+        list.insert(4, 20);
+        list.removeAt(3);
+        list.remove(20);
+
+        console.log(list.toString());
+    </script>
+</body>
+
+</html>
