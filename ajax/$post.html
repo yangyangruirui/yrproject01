@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,16 +9,23 @@
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js">
     </script>
 </head>
+
 <body>
     <button id="postbtn">点击发起post请求</button>
     <script>
-        $(function(){
-            $("#postbtn").on('click',function(){
-                $.post("http://www.liulongbin.top:3006/api/addbook",{bookname:'生意传',author:'yr',publisher:'cdpublisher'},function(res){
+        $(function() {
+            var obj = {
+                bookname: '生意传',
+                author: 'yr',
+                publisher: 'cdpublisher'
+            }
+            $("#postbtn").on('click', function() {
+                $.post("http://www.liulongbin.top:3006/api/addbook", obj, function(res) {
                     console.log(res);
                 });
             })
         })
     </script>
 </body>
+
 </html>

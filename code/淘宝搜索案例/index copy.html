@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <!-- 导入页面的基本样式 -->
+    <link rel="stylesheet" href="./css/search.css" />
+    <!-- 导入 jQuery -->
+    <script src="./lib/jquery.js"></script>
+    <script src="./lib/template-web.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Logo -->
+        <img src="./images/taobao_logo.png" alt="" class="logo" />
+
+        <div class="box">
+            <!-- tab 栏 -->
+            <div class="tabs">
+                <div class="tab-active">宝贝</div>
+                <div>店铺</div>
+            </div>
+            <!-- 搜索区域（搜索框和搜索按钮） -->
+            <div class="search-box">
+                <input id="ipt" type="text" class="ipt" placeholder="请输入要搜索的内容" /><button class="btnSearch">
+          搜索
+        </button>
+            </div>
+            <!-- 搜索列表区域 -->
+            <div id="suggest-list">
+            </div>
+        </div>
+    </div>
+    <script>
+        //4, 为了防止每输入一个字符就去发一次请求 需要做防抖
+        // 防抖的实现原理：定义一个计数器 在计时器事件完成后再去请求
+        //5,要将用户输入过的内容缓存下来  以便提高请求速度
+        var cacheobj = {};
+        $(function() {
+            var timer = null;
+
+            function fangd(text) {
+                timer = setTimeout(function() {
+                    serchcheck(text);
+                }, 500);
+            }
+
+            // 1,首先获取到keyup后的值
+            $('#ipt').on('keyup', function() {
+                    //每一次先清除计时器
+                    clearTimeout(timer);
+                    var stext = $(this).val().trim();
+                    // 如果值为空 则返回 并且置空输入框
+                    if (stext.length <= 0) {
+                        return $('#suggest-list').empty().hide();
+                    }
+                    // 如果值不为空  则进行jsonp查询
+                    // console.log('弹起了');
+                    // serchcheck(stext);
+                    //查询之前 先去缓存里面查询有没有数据
+                    if (cacheobj[stext]) {
+                        return showdata(cacheobj[stext]);
+                    }
+                    fangd(stext);
+                })
+                // 2,jsonp的查询方法
+            function serchcheck(data) {
+                $.ajax({
+                    url: "https://suggest.taobao.com/sug?q=" + data,
+                    dataType: "jsonp",
+                    success: function(res) {
+                        // console.log(res);
+                        showdata(res);
+                    }
+                })
+            }
+            //3,将请求回来的数据渲染到页面上
+            // （1，先创建模板
+            function showdata(res) {
+                // console.log(result);
+                if (res.result.length <= 0) {
+                    return $('#suggest-list').empty().hide();
+                }
+                var vhtml = template('showbox', res);
+                $('#suggest-list').html(vhtml).show();
+                //缓存每次请求回来的数据
+                var k = $('#ipt').val();
+                cacheobj[k] = res;
+                // console.log(cacheobj);
+            }
+
+        })
+    </script>
+    <script type="text/html" id="showbox">
+        <ul>
+            {{each result}}
+            <li>{{$value[0]}}</li>
+            {{/each}}
+        </ul>
+    </script>
+
+</body>
+
+</html>
